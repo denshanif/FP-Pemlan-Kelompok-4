@@ -1,0 +1,12 @@
+Kode : 157435
+Kategori : Sayuran
+Nama Barang : Sawi
+Harga : 12000
+Kode : 156758
+Kategori : Sayuran
+Nama Barang : Bawang
+Harga : 15000
+Kode : 156557
+Kategori : Sayuran
+Nama Barang : Wortel
+Harga : 10000
