@@ -40,7 +40,7 @@ int main()
         printf("===================================================\n");
 
         printf("\n=== SILAHKAN PILIH MENU YANG DI BAWAH INI ===\n");
-        printf("1. MENAMPILKAN SEMUA DATA BARANG\n");
+        printf("1. MENAMPILKAN SEMUA DATA BARANG YANG ADA\n");
         printf("2. KELUAR PROGRAM\n");
 
         printf("Masukkan pilihan anda: ");
