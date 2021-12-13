@@ -27,6 +27,7 @@ FILE *file_data;
 void tampilBarang();
 void cariBarang();
 void beli_barang();
+void listKeranjang();
 
 int main()
 {
@@ -501,6 +502,6 @@ void listKeranjang()
         printf("Kode Barang : %d\n", keranjang[i].kode);
         printf("Nama Barang : %s\n", keranjang[i].nama);
         printf("Kategori Barang : %s\n", keranjang[i].kategori);
-        printf("Harga Barang : %d\n", keranjang[i].harga);
+        printf("Harga Barang : %d\n\n", keranjang[i].harga);
     }
 }
