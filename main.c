@@ -14,7 +14,7 @@ struct data_beli
     int harga, kode;
 };
 
-int z = 0, b = 0;
+int z = 0, b = 0, totalHarga=0;
 
 typedef struct data_beli barang_beli;
 typedef struct data_barang barang;
@@ -72,7 +72,7 @@ int main()
             printf("\n");
             break;
         case 3:
-            listKeranjang();
+            komfirmasi();
             printf("\n");
             break;
         case 4:
@@ -479,18 +479,18 @@ up:
         printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di list");
     }
 
-    printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
+    printf("Tekan 1 untuk berhenti, 2 untuk melanjutkan: ");
     scanf("%d", &a);
 
     switch(a)
     {
     case 1:
+        printf("\n");
         break;
     case 2:
         b++;
         goto up;
     }
-
 }
 
 void listKeranjang()
@@ -501,6 +501,71 @@ void listKeranjang()
         printf("Kode Barang : %d\n", keranjang[i].kode);
         printf("Nama Barang : %s\n", keranjang[i].nama);
         printf("Kategori Barang : %s\n", keranjang[i].kategori);
-        printf("Harga Barang : %d\n", keranjang[i].harga);
+        printf("Harga Barang : %d\n\n", keranjang[i].harga);
+        totalHarga = totalHarga + keranjang[i].harga;
     }
 }
+
+void komfirmasi()
+{
+    int a;
+
+    if (b == 0) {
+        system("cls");
+        printf("=========================== Menampilkan Data =============================\n\n");
+        printf("KERANJANG MASIH KOSONG");
+    } else {
+        system("cls");
+        printf("=========================== Menampilkan Data =============================\n\n");
+        listKeranjang();
+        printf("TOTAL HARGA: Rp.%d\n", totalHarga);
+
+        printf("Tekan 1 untuk lanjut ke pembayaran, 2 untuk kembali: ");
+        scanf("%d", &a);
+
+        switch(a)
+        {
+        case 1:
+            pembayaran();
+            getch();
+            break;
+        case 2:
+            printf("\n");
+            break;
+        }
+    }
+}
+
+void pembayaran()
+{
+    int kembalian, uang;
+
+    printf("\nMasukkan jumlah pembayaran: Rp.");
+    scanf("%d", &uang);
+
+    kembalian = uang - totalHarga;
+
+    if (uang > totalHarga) {
+        system("cls");
+        printf("===================================================\n");
+        printf("        ========== NOTA BELANJA ==========         \n");
+        printf("===================================================\n\n");
+
+        printf("Daftar belanja anda:\n");
+        printf("=========================================\n");
+        listKeranjang();
+        printf("=========================================\n");
+        printf(" Total harga\t: Rp. %d\n", totalHarga);
+        printf(" Pembayaran\t: Rp. %d\n", uang);
+        printf(" Kembalian\t: Rp. %d\n\n", kembalian);
+
+        printf("===================================================\n");
+        printf("      ========== TRANSAKSI SELESAI ==========      \n");
+        printf("===================================================\n");
+        b = 0;
+        totalHarga = 0;
+    } else {
+        printf("MAAF UANG ANDA TIDAK CUKUP UNTUK MELAKUKAN PEMBAYARAN\n");
+    }
+}
+
