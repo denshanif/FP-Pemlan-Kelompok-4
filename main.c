@@ -27,6 +27,7 @@ FILE *file_data;
 void tampilBarang();
 void cariBarang();
 void beli_barang();
+void listKeranjang();
 
 int main()
 {
@@ -72,7 +73,7 @@ int main()
             printf("\n");
             break;
         case 3:
-            komfirmasi();
+            konfirmasi();
             printf("\n");
             break;
         case 4:
@@ -479,18 +480,18 @@ up:
         printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di list");
     }
 
-    printf("Tekan 1 untuk berhenti, 2 untuk melanjutkan: ");
+    printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
     scanf("%d", &a);
 
     switch(a)
     {
     case 1:
-        printf("\n");
         break;
     case 2:
         b++;
         goto up;
     }
+
 }
 
 void listKeranjang()
@@ -498,15 +499,15 @@ void listKeranjang()
     int i;
     for (i = 1; i <= b; i++)
     {
-        printf(" Kode Barang : %d\n", keranjang[i].kode);
-        printf(" Nama Barang : %s\n", keranjang[i].nama);
-        printf(" Kategori Barang : %s\n", keranjang[i].kategori);
-        printf(" Harga Barang : %d\n\n", keranjang[i].harga);
+        printf("Kode Barang : %d\n", keranjang[i].kode);
+        printf("Nama Barang : %s\n", keranjang[i].nama);
+        printf("Kategori Barang : %s\n", keranjang[i].kategori);
+        printf("Harga Barang : %d\n\n", keranjang[i].harga);
         totalHarga = totalHarga + keranjang[i].harga;
     }
 }
 
-void komfirmasi()
+void konfirmasi()
 {
     int a;
 
@@ -568,4 +569,3 @@ void pembayaran()
         printf("MAAF UANG ANDA TIDAK CUKUP UNTUK MELAKUKAN PEMBAYARAN\n");
     }
 }
-
