@@ -130,8 +130,8 @@ up:
     printf("================= Menampilkan Data Barang Menurut Nama Barang ===================\n\n");
     printf("\n======================= SILAHKAN PILIH OPSI DI BAWAH INI ======================\n");
 
-    printf("1. TAMPILKAN NAMA BARANG URUT ASCENDING (A-Z)\n");
-    printf("2. TAMPILKAN NAMA BARANG URUT DESCENDING (Z-A)\n");
+    printf("1. TAMPILKAN NAMA BARANG URUT ASCENDING (A-Z).\n");
+    printf("2. TAMPILKAN NAMA BARANG URUT DESCENDING (Z-A).\n");
     printf("3. KEMBALI KE MENU UTAMA\n");
 
     printf("Masukkan pilihan anda: ");
