@@ -40,8 +40,8 @@ int main()
         printf("===================================================\n");
 
         printf("\n=== SILAHKAN PILIH MENU YANG DI BAWAH INI ===\n");
-        printf("1. MENAMPILKAN SEMUA DATA BARANG\n");
-        printf("2. KELUAR PROGRAM\n");
+        printf("1. MENAMPILKAN SEMUA DATA BARANG.\n");
+        printf("2. KELUAR PROGRAM.\n");
 
         printf("Masukkan pilihan anda: ");
         scanf("%d", &menu);
@@ -58,7 +58,7 @@ int main()
         case 2:
             exit(0);
         default:
-            printf("Maaf, input yang anda masukkan salah/invalid");
+            printf("Maaf, input yang anda masukkan salah/invalid.");
             printf("\n");
             break;
         }
@@ -132,7 +132,7 @@ up:
 
     printf("1. TAMPILKAN NAMA BARANG URUT ASCENDING (A-Z).\n");
     printf("2. TAMPILKAN NAMA BARANG URUT DESCENDING (Z-A).\n");
-    printf("3. KEMBALI KE MENU UTAMA\n");
+    printf("3. KEMBALI KE MENU UTAMA.\n");
 
     printf("Masukkan pilihan anda: ");
     scanf("%d", &menu);
@@ -159,7 +159,7 @@ up:
     case 3:
         break;
     default:
-        printf("Maaf, input yang anda masukkan salah/invalid");
+        printf("Maaf, input yang anda masukkan salah/invalid.");
         printf("\n");
         printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
         getch();
@@ -222,9 +222,9 @@ up:
     printf("================ Menampilkan Data Barang Menurut Harga Barang ===================\n\n");
     printf("\n======================= SILAHKAN PILIH OPSI DI BAWAH INI ======================\n");
 
-    printf("1. TAMPILKAN HARGA BARANG URUT ASCENDING (Murah - Mahal)\n");
-    printf("2. TAMPILKAN HARGA BARANG URUT DESCENDING (Mahal - Murah)\n");
-    printf("3. KEMBALI KE MENU UTAMA\n");
+    printf("1. TAMPILKAN HARGA BARANG URUT ASCENDING (Murah - Mahal).\n");
+    printf("2. TAMPILKAN HARGA BARANG URUT DESCENDING (Mahal - Murah).\n");
+    printf("3. KEMBALI KE MENU UTAMA.\n");
 
     printf("Masukkan pilihan anda: ");
     scanf("%d", &menu);
@@ -251,7 +251,7 @@ up:
     case 3:
         break;
     default:
-        printf("Maaf, input yang anda masukkan salah/invalid");
+        printf("Maaf, input yang anda masukkan salah/invalid.");
         printf("\n");
         printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
         getch();
@@ -269,9 +269,9 @@ up:
     printf("=========================== Menampilkan Data Barang =============================\n\n");
     printf("\n======================= SILAHKAN PILIH OPSI DI BAWAH INI ======================\n");
 
-    printf("1. TAMPILKAN DATA BARANG URUT SESUAI NAMA BARANG\n");
-    printf("2. TAMPILKAN DATA BARANG URUT SESUAI HARGA BARANG\n");
-    printf("3. KEMBALI KE MENU UTAMA\n");
+    printf("1. TAMPILKAN DATA BARANG URUT SESUAI NAMA BARANG.\n");
+    printf("2. TAMPILKAN DATA BARANG URUT SESUAI HARGA BARANG.\n");
+    printf("3. KEMBALI KE MENU UTAMA.\n");
 
     printf("Masukkan pilihan anda: ");
     scanf("%d", &menu);
