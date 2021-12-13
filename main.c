@@ -296,7 +296,7 @@ up:
     case 3:
         break;
     default:
-        printf("Maaf, input yang anda masukkan salah/invalid");
+        printf("Maaf, input yang anda masukkan salah/invalid.");
         printf("\n");
         printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
         getch();
