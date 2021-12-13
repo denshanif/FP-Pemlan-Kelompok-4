@@ -498,10 +498,10 @@ void listKeranjang()
     int i;
     for (i = 1; i <= b; i++)
     {
-        printf("Kode Barang : %d\n", keranjang[i].kode);
-        printf("Nama Barang : %s\n", keranjang[i].nama);
-        printf("Kategori Barang : %s\n", keranjang[i].kategori);
-        printf("Harga Barang : %d\n\n", keranjang[i].harga);
+        printf(" Kode Barang : %d\n", keranjang[i].kode);
+        printf(" Nama Barang : %s\n", keranjang[i].nama);
+        printf(" Kategori Barang : %s\n", keranjang[i].kategori);
+        printf(" Harga Barang : %d\n\n", keranjang[i].harga);
         totalHarga = totalHarga + keranjang[i].harga;
     }
 }
@@ -551,7 +551,7 @@ void pembayaran()
         printf("        ========== NOTA BELANJA ==========         \n");
         printf("===================================================\n\n");
 
-        printf("Daftar belanja anda:\n");
+        printf(" Daftar belanja anda:\n");
         printf("=========================================\n");
         listKeranjang();
         printf("=========================================\n");
