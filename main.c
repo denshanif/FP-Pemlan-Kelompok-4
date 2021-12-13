@@ -14,7 +14,7 @@ struct data_beli
     int harga, kode;
 };
 
-int z = 0, b = 0, totalHarga=0;
+int z = 0, b = 0, totalHarga = 0;
 
 typedef struct data_beli barang_beli;
 typedef struct data_barang barang;
@@ -26,8 +26,7 @@ FILE *file_data;
 
 void tampilBarang();
 void cariBarang();
-void beli_barang();
-void listKeranjang();
+void konfirmasi();
 
 int main()
 {
@@ -106,6 +105,48 @@ void listNama()
         printf("Kategori Barang : %s\n", data[i].kategori);
         printf("Harga Barang : %d\n\n", data[i].harga);
     }
+}
+
+void beli_barang(char *judul)
+{
+    int a, c=0, i, beli;
+    b++;
+
+up:
+    system("cls");
+    printf("=========================== %s =============================\n\n", judul);
+    listNama();
+    printf("\n");
+
+    printf("Masukkan kode barang yang ingin dibeli: ");
+    scanf("%d", &beli);
+
+    for (i=0; i<z ;i++) {
+        if (data[i].kode == beli) {
+            keranjang[b].nama = data[i].nama;
+            keranjang[b].kode = data[i].kode;
+            keranjang[b].kategori = data[i].kategori;
+            keranjang[b].harga = data[i].harga;
+        } else {
+            c=c+1;
+        }
+    }
+
+    if (c==z) {
+        printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di list");
+    }
+
+    printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
+    scanf("%d", &a);
+
+    switch(a) {
+    case 1:
+        break;
+    case 2:
+        b++;
+        goto up;
+    }
+
 }
 
 void urutNamaAscen()
@@ -451,48 +492,6 @@ up:
     }
 }
 
-void beli_barang(char *judul)
-{
-    int a, c=0, i, beli;
-    b++;
-
-up:
-    system("cls");
-    printf("=========================== %s =============================\n\n", judul);
-    listNama();
-    printf("\n");
-
-    printf("Masukkan kode barang yang ingin dibeli: ");
-    scanf("%d", &beli);
-
-    for (i=0; i<z ;i++) {
-        if (data[i].kode == beli) {
-            keranjang[b].nama = data[i].nama;
-            keranjang[b].kode = data[i].kode;
-            keranjang[b].kategori = data[i].kategori;
-            keranjang[b].harga = data[i].harga;
-        } else {
-            c=c+1;
-        }
-    }
-
-    if (c==z) {
-        printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di list");
-    }
-
-    printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
-    scanf("%d", &a);
-
-    switch(a) {
-    case 1:
-        break;
-    case 2:
-        b++;
-        goto up;
-    }
-
-}
-
 void listKeranjang()
 {
     int i;
@@ -504,36 +503,6 @@ void listKeranjang()
         printf("Harga Barang : %d\n\n", keranjang[i].harga);
 
         totalHarga = totalHarga + keranjang[i].harga;
-    }
-}
-
-void konfirmasi()
-{
-    int a;
-
-    if (b == 0) {
-        system("cls");
-        printf("=========================== Menampilkan Data =============================\n\n");
-        printf("KERANJANG MASIH KOSONG");
-    } else {
-        system("cls");
-        printf("=========================== Menampilkan Data =============================\n\n");
-        listKeranjang();
-        printf("TOTAL HARGA: Rp.%d\n", totalHarga);
-
-        printf("Tekan 1 untuk lanjut ke pembayaran, 2 untuk kembali: ");
-        scanf("%d", &a);
-
-        switch(a)
-        {
-        case 1:
-            pembayaran();
-            getch();
-            break;
-        case 2:
-            printf("\n");
-            break;
-        }
     }
 }
 
@@ -567,5 +536,35 @@ void pembayaran()
         totalHarga = 0;
     } else {
         printf("MAAF UANG ANDA TIDAK CUKUP UNTUK MELAKUKAN PEMBAYARAN\n");
+    }
+}
+
+void konfirmasi()
+{
+    int a;
+
+    if (b == 0) {
+        system("cls");
+        printf("=========================== Menampilkan Data =============================\n\n");
+        printf("KERANJANG MASIH KOSONG");
+    } else {
+        system("cls");
+        printf("=========================== Menampilkan Data =============================\n\n");
+        listKeranjang();
+        printf("TOTAL HARGA: Rp.%d\n", totalHarga);
+
+        printf("Tekan 1 untuk lanjut ke pembayaran, 2 untuk kembali: ");
+        scanf("%d", &a);
+
+        switch(a)
+        {
+        case 1:
+            pembayaran();
+            getch();
+            break;
+        case 2:
+            printf("\n");
+            break;
+        }
     }
 }
