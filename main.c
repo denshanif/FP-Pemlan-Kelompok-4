@@ -5,7 +5,7 @@
 
 struct data_barang
 {
-    char nama[25], kategori[25];
+    char nama[50], kategori[50];
     int harga, kode;
 } tukar;
 
@@ -15,19 +15,28 @@ struct data_beli
     int harga, kode;
 };
 
+struct data_kategori
+{
+    char *nama, *kategori;
+    int harga, kode;
+} tukar1;
+
 int z = 0, b = 0, totalHarga = 0;
 
+typedef struct data_kategori kategori_barang;
 typedef struct data_beli barang_beli;
 typedef struct data_barang barang;
 
 barang data['0'];
 barang_beli keranjang['0'];
+kategori_barang filter_kategori['0'];
 
 FILE *file_data;
 
 void tampilBarang();
 void cariBarang();
 void konfirmasi();
+void tampilKategori();
 
 int main()
 {
@@ -43,8 +52,7 @@ int main()
         z++;
     }
 
-    do
-    {
+    up:
         system("cls");
         printf("===================================================\n");
         printf("========== PROGRAM MANAJEMEN SUPERMARKET ==========\n");
@@ -52,9 +60,11 @@ int main()
 
         printf("\n=== SILAHKAN PILIH MENU YANG DI BAWAH INI ===\n");
         printf("1. MENAMPILKAN SEMUA DATA BARANG.\n");
-        printf("2. PENCARIAN DATA BARANG.\n");
-        printf("3. KONFIRMASI PEMBELIAN. \n");
-        printf("4. KELUAR PROGRAM.\n");
+        printf("2. MENAMPILKAN BARANG BERDASARKAN KATEGORI. \n");
+        printf("3. PENCARIAN DATA BARANG.\n");
+        printf("4. KONFIRMASI PEMBELIAN. \n\n");
+
+        printf("5. KELUAR PROGRAM.\n");
 
         printf("Masukkan pilihan anda: ");
         scanf("%d", &menu);
@@ -67,29 +77,37 @@ int main()
         case 1:
             tampilBarang();
             printf("\n");
-            break;
+            printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+            getch();
+            goto up;
         case 2:
+            tampilKategori();
+            printf("\n");
+            printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+            getch();
+            goto up;
+        case 3:
             cariBarang();
             printf("\n");
-            break;
-        case 3:
+            printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+            getch();
+            goto up;
+        case 4:
             konfirmasi();
             printf("\n");
-            break;
-        case 4:
+            printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+            getch();
+            goto up;
+        case 5:
             exit(0);
         default:
             printf("Maaf, input yang anda masukkan salah/invalid.");
             printf("\n");
-            break;
+            printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+            getch();
+            goto up;
         }
         printf("\n");
-
-        // Pilihan kembali ke menu utama
-        printf("Ingin kembali ke menu utama? (Y/T): ");
-        scanf("%c", &kembali);
-        scanf("%c", &kembali);
-    } while (kembali == 'y' || kembali == 'Y');
 
     fclose(file_data);
 
@@ -147,7 +165,6 @@ up:
         b++;
         goto up;
     }
-
 }
 
 void urutNamaAscen()
@@ -193,7 +210,8 @@ up:
     printf("\n======================= SILAHKAN PILIH OPSI DI BAWAH INI ======================\n");
 
     printf("1. TAMPILKAN NAMA BARANG URUT ASCENDING (A-Z).\n");
-    printf("2. TAMPILKAN NAMA BARANG URUT DESCENDING (Z-A).\n");
+    printf("2. TAMPILKAN NAMA BARANG URUT DESCENDING (Z-A).\n\n");
+
     printf("3. KEMBALI KE MENU UTAMA.\n");
 
     printf("Masukkan pilihan anda: ");
@@ -224,18 +242,6 @@ up:
         printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
         getch();
         goto up;
-    }
-}
-
-void listHarga()
-{
-    int i;
-    for (i = 0; i < z; i++)
-    {
-        printf("Harga Barang : %d\n", data[i].harga);
-        printf("Kode Barang : %d\n", data[i].kode);
-        printf("Kategori Barang : %s\n", data[i].kategori);
-        printf("Nama Barang : %s\n\n", data[i].nama);
     }
 }
 
@@ -282,7 +288,8 @@ up:
     printf("\n======================= SILAHKAN PILIH OPSI DI BAWAH INI ======================\n");
 
     printf("1. TAMPILKAN HARGA BARANG URUT ASCENDING (Murah - Mahal).\n");
-    printf("2. TAMPILKAN HARGA BARANG URUT DESCENDING (Mahal - Murah).\n");
+    printf("2. TAMPILKAN HARGA BARANG URUT DESCENDING (Mahal - Murah).\n\n");
+
     printf("3. KEMBALI KE MENU UTAMA.\n");
 
     printf("Masukkan pilihan anda: ");
@@ -327,7 +334,8 @@ up:
     printf("\n======================= SILAHKAN PILIH OPSI DI BAWAH INI ======================\n");
 
     printf("1. TAMPILKAN DATA BARANG URUT SESUAI NAMA BARANG.\n");
-    printf("2. TAMPILKAN DATA BARANG URUT SESUAI HARGA BARANG.\n");
+    printf("2. TAMPILKAN DATA BARANG URUT SESUAI HARGA BARANG.\n\n");
+
     printf("3. KEMBALI KE MENU UTAMA.\n");
 
     printf("Masukkan pilihan anda: ");
@@ -384,49 +392,49 @@ void cariKode() {
 
     system("cls");
 
-    int x;
+    int cari;
     printf("=================== Pencarian Data Barang Berdasarkan Kode Barang ===================\n\n");
 
 	printf("Masukkan Kode Buku Yang Ingin Dicari: ");
-	scanf("%d", &x);
+	scanf("%d", &cari);
 
-	// Jump Search
+	// Interpolation Search
 
-	int n = z, jump = sqrt(n), prev = 0, i = 0;
+	int low = 0, high = z - 1, match, ketemu = 0;
+    float mid;
+    int posisi;
 
-    while (data[jump].kode <= x && jump < n) {
-        prev = jump;
-        jump += sqrt(n);
-        if (prev >= n + 1) {
-            printf("Data tidak ditemukan\n");
-            printf("Tekan enter untuk mengulangi input kode buku.\n");
-            getch();
-            goto ulangi;
-        }
-        i++;
-    }
-
-    int ketemu = 0;
-    int j;
-    for (j = prev; j <= jump; j++) {
-        if (data[j].kode == x) {
+    while (cari >= data[low].kode && cari <= data[high].kode)
+    {
+        mid = (cari - data[low].kode) / (data[high].kode - data[low].kode) * (high - low) + low;
+        posisi = mid;
+        if (data[posisi].kode == cari){
+            match = posisi;
             ketemu = 1;
-            printf("Data barang ditemukan!\n\n");
-
-            printf("Kode Barang : %d\n\n", data[i].kode);
-
-            printf("Kategori Barang : %s\n", data[i].kategori);
-            printf("Nama Barang : %s\n", data[i].nama);
-            printf("Harga Barang : %d\n\n", data[i].harga);
             break;
         }
+        if (data[posisi].kode > cari)
+            high = posisi - 1;
+        else if (data[posisi].kode < cari)
+            low = posisi + 1;
     }
 
-    if (i == 0 && ketemu == 0) {
-        printf("Data tidak ditemukan\n");
-        printf("Tekan enter untuk mengulangi input kode barang.\n");
+    if (ketemu == 0)
+    {
+        printf ("Data Tidak Ditemukan\n");
+        printf("Tekan enter untuk mengulangi input nama barang.\n");
         getch();
         goto ulangi;
+    }
+    else
+    {
+            printf("Data barang ditemukan!\n\n");
+
+            printf("Nama Barang : %s\n\n", data[match].nama);
+
+            printf("Kode Barang : %d\n", data[match].kode);
+            printf("Kategori Barang : %s\n", data[match].kategori);
+            printf("Harga Barang : %d\n\n", data[match].harga);
     }
 }
 
@@ -494,7 +502,8 @@ up:
     printf("\n======================= SILAHKAN PILIH OPSI DI BAWAH INI ======================\n");
 
     printf("1. CARI DATA BARANG BERDASARKAN KODE BARANG.\n");
-    printf("2. CARI DATA BARANG BERDASARKAN NAMA BARANG.\n");
+    printf("2. CARI DATA BARANG BERDASARKAN NAMA BARANG.\n\n");
+
     printf("3. KEMBALI KE MENU UTAMA.\n");
 
     printf("Masukkan pilihan anda: ");
@@ -581,11 +590,11 @@ void konfirmasi()
 
     if (b == 0) {
         system("cls");
-        printf("=========================== Menampilkan Data =============================\n\n");
+        printf("=========================== Keranjang Belanja =============================\n\n");
         printf("KERANJANG MASIH KOSONG");
     } else {
         system("cls");
-        printf("=========================== Menampilkan Data =============================\n\n");
+        printf("=========================== Keranjang Belanja =============================\n\n");
         listKeranjang();
         printf("TOTAL HARGA: Rp.%d\n", totalHarga);
 
@@ -602,5 +611,145 @@ void konfirmasi()
             printf("\n");
             break;
         }
+    }
+}
+
+void urutKategori()
+{
+    int i, j;
+
+	// Looping bubble sort
+	for (i = z - 1; i > 0; i--) {
+		for (j = z - 1; j >= z - i; j--) {
+			if (strcmp(data[j].kategori, data[j-1].kategori) < 0) {
+				tukar = data[j];
+				data[j] = data[j-1];
+				data[j-1] = tukar;
+			}
+		}
+	}
+}
+
+void filter(char *judul)
+{
+    urutKategori();
+
+    int i, n = 0;
+
+    char k[50];
+    strcpy(k, judul);
+
+    printf("====================== Kategori %s ========================\n\n", k);
+
+    for (i = 0; i < z; i++)
+    {
+        if (strcmp(data[i].kategori, k) == 0)
+        {
+            printf("Nama Barang : %s\n", data[i].nama);
+            printf("Kode Barang : %d\n", data[i].kode);
+            printf("Kategori Barang : %s\n", data[i].kategori);
+            printf("Harga Barang : %d\n\n", data[i].harga);
+
+            n++;
+        }
+    }
+
+    if (n == 0)
+    {
+        printf("Tidak ada barang dengan kategori %s\n", k);
+    }
+
+    printf("Jumlah barang kategori %s : %d\n", k, n);
+}
+
+void tampilKategori()
+{
+    int menu;
+
+// Menu
+up:
+    system("cls");
+    printf("================= Menampilkan Data Barang Berdasarkan Kategori ===================\n\n");
+    printf("\n======================= SILAHKAN PILIH OPSI DI BAWAH INI =======================\n");
+
+    printf("1. TAMPILKAN BARANG KATEGORI SAYURAN.\n");
+    printf("2. TAMPILKAN BARANG KATEGORI BUAH.\n");
+    printf("3. TAMPILKAN BARANG KATEGORI MINUMAN.\n");
+    printf("4. TAMPILKAN BARANG KATEGORI MAKANAN RINGAN.\n");
+    printf("5. TAMPILKAN BARANG KATEGORI BAHAN DAPUR MASAKAN.\n");
+    printf("6. TAMPILKAN BARANG KATEGORI KECANTIKAN.\n");
+    printf("7. TAMPILKAN BARANG KATEGORI ALAT RUMAH TANGGA.\n");
+    printf("8. TAMPILKAN BARANG KATEGORI OBAT-OBATAN.\n");
+    printf("9. TAMPILKAN BARANG KATEGORI ALAT TULIS.\n");
+    printf("10. TAMPILKAN BARANG KATEGORI KEBUTUHAN HEWAN.\n\n");
+
+    printf("11. KEMBALI KE MENU UTAMA.\n");
+
+    printf("Masukkan pilihan anda: ");
+    scanf("%d", &menu);
+
+    printf("\n");
+
+    // Switch case pemilihan menu
+    switch (menu)
+    {
+    case 1:
+        filter("Sayuran");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 2:
+        filter("Buah");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 3:
+        filter("Minuman");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 4:
+        filter("Makanan Ringan");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 5:
+        filter("Bahan Dapur Masakan");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 6:
+        filter("Kecantikan");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 7:
+        filter("Alat Rumah Tangga");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 8:
+        filter("Obat-obatan");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 9:
+        filter("Alat Tulis");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 10:
+        filter("Kebutuhan Hewan");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
+    case 11:
+        break;
+    default:
+        printf("Maaf, input yang anda masukkan salah/invalid.");
+        printf("\n");
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+        getch();
+        goto up;
     }
 }
