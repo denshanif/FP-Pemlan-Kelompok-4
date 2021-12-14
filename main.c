@@ -154,7 +154,7 @@ up:
     printf("Masukkan kode barang yang ingin dibeli: ");
     scanf("%d", &beli);
 
-    for (i=0; i<z ;i++) {
+    for (i=0; i<banyakData ;i++) {
         if (data[i].kode == beli) {
             keranjang[b].nama = data[i].nama;
             keranjang[b].kode = data[i].kode;
