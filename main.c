@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 struct data_barang
 {
@@ -379,72 +380,107 @@ void urutKodeAscen()
 void cariKode() {
     urutKodeAscen();
 
-    int i, flag = 0;
-    int cari;
+    ulangi:
 
-up:
-	printf("Masukkan kode barang yang ingin dicari: ");
-	scanf("%d", &cari);
+    system("cls");
 
-	for(i = 0; i < z; i++) {
-		if (data[i].kode == cari) {
-            flag = 1;
+    int x;
+    printf("=================== Pencarian Data Barang Berdasarkan Kode Barang ===================\n\n");
 
+	printf("Masukkan Kode Buku Yang Ingin Dicari: ");
+	scanf("%d", &x);
+
+	// Jump Search
+
+	int n = z, jump = sqrt(n), prev = 0, i = 0;
+
+    while (data[jump].kode <= x && jump < n) {
+        prev = jump;
+        jump += sqrt(n);
+        if (prev >= n + 1) {
+            printf("Data tidak ditemukan\n");
+            printf("Tekan enter untuk mengulangi input kode buku.\n");
+            getch();
+            goto ulangi;
+        }
+        i++;
+    }
+
+    int ketemu = 0;
+    int j;
+    for (j = prev; j <= jump; j++) {
+        if (data[j].kode == x) {
+            ketemu = 1;
+            printf("Data barang ditemukan!\n\n");
+
+            printf("Kode Barang : %d\n\n", data[i].kode);
+
+            printf("Kategori Barang : %s\n", data[i].kategori);
+            printf("Nama Barang : %s\n", data[i].nama);
+            printf("Harga Barang : %d\n\n", data[i].harga);
             break;
         }
-	}
-
-	if (flag == 1)
-    {
-        printf("Data barang ditemukan!\n\n");
-
-        printf("Kode Barang : %d\n\n", data[i].kode);
-
-        printf("Kategori Barang : %s\n", data[i].kategori);
-        printf("Nama Barang : %s\n", data[i].nama);
-        printf("Harga Barang : %d\n\n", data[i].harga);
     }
-    else
-    {
-        printf("Data yang anda cari tidak ditemukan \n");
+
+    if (i == 0 && ketemu == 0) {
+        printf("Data tidak ditemukan\n");
+        printf("Tekan enter untuk mengulangi input kode barang.\n");
         getch();
-        goto up;
+        goto ulangi;
     }
 }
 
 void cariNama() {
     urutNamaAscen();
 
-    int i, flag = 0;
+    ulangi:
+
+    system("cls");
+
     char cari[25];
+    printf("=================== Pencarian Data Barang Berdasarkan Nama Barang ==================\n\n");
 
-up:
-	printf("Masukkan nama barang yang ingin dicari: ");
-	scanf("%s", &cari);
+	printf("Masukkan Judul Buku Yang Ingin Dicari: ");
+	gets(cari);
+	scanf("%[^\n]", &cari);
 
-	for(i = 0; i < z; i++) {
-		if (strcmp(data[i].nama, cari) == 0) {
-            flag = 1;
+	// Interpolation Search
 
+	int low = 0, high = z - 1, match, ketemu = 0;
+    float mid;
+    int posisi;
+
+    while ((strcmp(cari, data[low].nama) >= 0) && (strcmp(cari, data[high].nama) <= 0))
+    {
+        mid = (float) strcmp(cari, data[low].nama) / strcmp(data[high].nama, data[low].nama) * (high - low) + low;
+        posisi = floor(mid);
+        if (strcmp(data[posisi].nama, cari) == 0){
+            match = posisi;
+            ketemu = 1;
             break;
         }
-	}
+        if (strcmp(data[posisi].nama, cari) > 0)
+            high = posisi - 1;
+        else if (strcmp(data[posisi].nama, cari) < 0)
+            low = posisi + 1;
+    }
 
-	if (flag == 1)
+    if (ketemu == 0)
     {
-        printf("Data barang ditemukan!\n\n");
-
-        printf("Nama Barang : %s\n\n", data[i].nama);
-
-        printf("Kode Barang : %d\n", data[i].kode);
-        printf("Kategori Barang : %s\n", data[i].kategori);
-        printf("Harga Barang : %d\n\n", data[i].harga);
+        printf ("Data Tidak Ditemukan\n");
+        printf("Tekan enter untuk mengulangi input nama barang.\n");
+        getch();
+        goto ulangi;
     }
     else
     {
-        printf("Data yang anda cari tidak ditemukan \n");
-        getch();
-        goto up;
+            printf("Data barang ditemukan!\n\n");
+
+            printf("Nama Barang : %s\n\n", data[match].nama);
+
+            printf("Kode Barang : %d\n", data[match].kode);
+            printf("Kategori Barang : %s\n", data[match].kategori);
+            printf("Harga Barang : %d\n\n", data[match].harga);
     }
 }
 
