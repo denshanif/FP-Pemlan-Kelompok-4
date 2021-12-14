@@ -1,12 +1,200 @@
-Kode : 157435
-Kategori : Sayuran Hijau#
-Nama Barang : Sawi Hijau#
+Kode : 157001
+Kategori : Sayuran#
+Nama Barang : Sawi Hijau 100gr#
+Harga : 4500
+Kode : 157002
+Kategori : Sayuran#
+Nama Barang : Bawang Merah 250gr#
 Harga : 12000
-Kode : 156758
-Kategori : Sayuran Hijau#
-Nama Barang : Bawang Merah#
+Kode : 157003
+Kategori : Sayuran#
+Nama Barang : Wortel 200gr#
+Harga : 5000
+Kode : 157004
+Kategori : Sayuran#
+Nama Barang : Kol 200gr#
+Harga : 10500
+Kode : 157005
+Kategori : Sayuran#
+Nama Barang : Tomat 150gr#
+Harga : 4000
+Kode : 158001
+Kategori : Buah#
+Nama Barang : Melon 3kg#
+Harga : 25000
+Kode : 158002
+Kategori : Buah#
+Nama Barang : Lemon 1kg#
 Harga : 15000
-Kode : 156557
-Kategori : Sayuran Hijau#
-Nama Barang : Wortel Merah#
+Kode : 158003
+Kategori : Buah#
+Nama Barang : Pisang 600gr#
+Harga : 13000
+Kode : 158004
+Kategori : Buah#
+Nama Barang : Mangga 1kg#
+Harga : 14000
+Kode : 158005
+Kategori : Buah#
+Nama Barang : Semangka 400gr#
+Harga : 11000
+Kode : 159001
+Kategori : Minuman#
+Nama Barang : Strawberry 330ml#
+Harga : 7500
+Kode : 159002
+Kategori : Minuman#
+Nama Barang : Big Strawberry 215ml#
+Harga : 5500
+Kode : 159003
+Kategori : Minuman#
+Nama Barang : ABC Sari Jawa 250ml#
+Harga : 4500
+Kode : 159004
+Kategori : Minuman#
+Nama Barang : ABC Sari Kedelai 200ml#
+Harga : 17500
+Kode : 159005
+Kategori : Minuman#
+Nama Barang : Kratingdaeng 250ml#
+Harga : 8000
+Kode : 160001
+Kategori : Makanan Ringan#
+Nama Barang : Chocolatos 8.5gr isi 24pcs#
+Harga : 12000
+Kode : 160002
+Kategori : Makanan Ringan#
+Nama Barang : Gery Snack 30gr isi 10pcs#
+Harga : 18000
+Kode : 160003
+Kategori : Makanan Ringan#
+Nama Barang : Japota Honey Butter 68gr#
+Harga : 4000
+Kode : 160004
+Kategori : Makanan Ringan#
+Nama Barang : Monde Serena 50gr#
+Harga : 4000
+Kode : 160005
+Kategori : Makanan Ringan#
+Nama Barang : Oreo 133gr#
+Harga : 8500
+Kode : 161001
+Kategori : Bahan Dapur Masakan#
+Nama Barang : Sajiku Tepung Bumbu Serbaguna 40gr isi 10pcs#
+Harga : 13500
+Kode : 161002
+Kategori : Bahan Dapur Masakan# 
+Nama Barang : Sajiku Tepung Bumbu Bakwan Crispy 225gr#
+Harga : 4500
+Kode : 161003
+Kategori : Bahan Dapur Masakan#
+Nama Barang : Saos Tiram 150ml#
+Harga : 6500
+Kode : 161004
+Kategori : Bahan Dapur Masakan#
+Nama Barang : Sajiku Tepung Bumbu Bakwan Crispy 225gr#
+Harga : 4500
+Kode : 161005
+Kategori : Bahan Dapur Masakan# 
+Nama Barang : Sasa Tepung Bumbu Serbaguna 200gr#
+Harga : 5500
+Kode : 162001
+Kategori : Kecantikan#
+Nama Barang : Sabun Giv Cair 60ml#
+Harga : 2500
+Kode : 162002
+Kategori : Kecantikan#
+Nama Barang : Sabun Dettol 100gr isi 5pcs#
+Harga : 26000
+Kode : 162003
+Kategori : Kecantikan#
+Nama Barang : Shampoo Sunsilk Black Shine 170ml#
+Harga : 20000
+Kode : 162004
+Kategori : Kecantikan#
+Nama Barang : Shampoo Sunsilk Black Shine 70ml#
+Harga : 12500
+Kode : 162005
+Kategori : Kecantikan#
+Nama Barang : Nivea Men Facial Wash 50ml#
+Harga : 18000
+Kode : 163001
+Kategori : Alat Rumah Tangga#
+Nama Barang : Kain Lap Meja Piring Microfiber#
+Harga : 3500
+Kode : 163002
+Kategori : Alat Rumah Tangga#
+Nama Barang : Sapu Mini Rumah#
+Harga : 4000
+Kode : 163003
+Kategori : Alat Rumah Tangga#
+Nama Barang : Pasrah 3 in 1#
 Harga : 10000
+Kode : 163004
+Kategori : Alat Rumah Tangga#
+Nama Barang : Alat Pemotong Sayuran#
+Harga : 31000
+Kode : 163005
+Kategori : Alat Rumah Tangga#
+Nama Barang : Spatula isi 6pcs#
+Harga : 15500
+Kode : 164001
+Kategori : Obat-obatan#
+Nama Barang : Cetirizine 10mg isi 10 tablet#
+Harga : 22000
+Kode : 164002
+Kategori : Obat-obatan#
+Nama Barang : Bodrex 15mg isi 20 tablet#
+Harga : 9000
+Kode : 164003
+Kategori : Obat-obatan#
+Nama Barang : Vicks Formula 44 Dewasa 54ml#
+Harga : 16500
+Kode : 164004
+Kategori : Obat-obatan#
+Nama Barang : Bodrex 15mg isi 20 tablet#
+Harga : 9000
+Kode : 164005
+Kategori : Obat-obatan#
+Nama Barang : Sanmol isi 20 tablet#
+Harga : 1500
+Kode : 165001
+Kategori : Alat Tulis#
+Nama Barang : Pulpen Joyko 0.5mm#
+Harga : 2500
+Kode : 165002
+Kategori : Alat Tulis#
+Nama Barang : Pensil Montana 3B isi 112pcs#
+Harga : 4500
+Kode : 165003
+Kategori : Alat Tulis#
+Nama Barang : Kkv Pencil case#
+Harga : 20000
+Kode : 165004
+Kategori : Alat Tulis#
+Nama Barang : Tipe X kertas 6mm#
+Harga : 6500
+Kode : 165005
+Kategori : Alat Tulis#
+Nama Barang : Rak Tempat Alat Tulis#
+Harga : 19000
+Kode : 166001
+Kategori : Kebutuhan Hewan#
+Nama Barang : Whiskas kering 480gr#
+Harga : 27000
+Kode : 165002
+Kategori : Kebutuhan Hewan#
+Nama Barang : Sheba Makanan Kucing Basah 70gr#
+Harga : 8500
+Kode : 165003
+Kategori : Kebutuhan Hewan#
+Nama Barang : Takari 100gr#
+Harga : 3000
+Kode : 165004
+Kategori : Kebutuhan Hewan#
+Nama Barang : Pedigre Makanan Anjing Kering 3kg#
+Harga : 121000
+Kode : 165005
+Kategori : Kebutuhan Hewan#
+Nama Barang : Happy Cat#
+Harga : 23000
