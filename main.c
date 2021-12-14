@@ -407,7 +407,7 @@ void cariKode() {
 
     system("cls");
 
-    int cari;
+    int a, cari;
     printf("=================== Pencarian Data Barang Berdasarkan Kode Barang ===================\n\n");
 
 	printf("Masukkan Kode Barang Yang Ingin Dicari: ");
@@ -437,10 +437,17 @@ void cariKode() {
     if (ketemu == 0)
     {
         printf ("Data Tidak Ditemukan\n");
-        printf("Tekan enter untuk mengulangi input nama barang.\n");
-        getch();
-        goto ulangi;
-    }
+        printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
+    	scanf("%d", &a);
+
+    	switch(a) {
+    	case 1:
+        	printf("\n");
+        	break;
+    	case 2:
+        	goto ulangi;
+  		}
+	}
     else
     {
             printf("Data barang ditemukan!\n\n");
@@ -459,6 +466,7 @@ void cariNama() {
 
     system("cls");
 
+    int a;
     char cari[25];
     printf("=================== Pencarian Data Barang Berdasarkan Nama Barang ==================\n\n");
 
@@ -490,9 +498,16 @@ void cariNama() {
     if (ketemu == 0)
     {
         printf ("Data Tidak Ditemukan\n");
-        printf("Tekan enter untuk mengulangi input nama barang.\n");
-        getch();
-        goto ulangi;
+	 	printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
+    	scanf("%d", &a);
+
+    	switch(a) {
+    	case 1:
+        	printf("\n");
+        	break;
+    	case 2:
+        	goto ulangi;
+  		}
     }
     else
     {
