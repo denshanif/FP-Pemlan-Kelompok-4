@@ -648,10 +648,15 @@ void filter(char *judul)
     {
         if (strcmp(data[i].kategori, k) == 0)
         {
-            printf("Nama Barang : %s\n", data[i].nama);
-            printf("Kode Barang : %d\n", data[i].kode);
-            printf("Kategori Barang : %s\n", data[i].kategori);
-            printf("Harga Barang : %d\n\n", data[i].harga);
+            filter_kategori[n].nama = data[i].nama;
+            filter_kategori[n].kode = data[i].kode;
+            filter_kategori[n].kategori = data[i].kategori;
+            filter_kategori[n].harga = data[i].harga;
+
+            printf("Nama Barang : %s\n", filter_kategori[n].nama);
+            printf("Kode Barang : %d\n", filter_kategori[n].kode);
+            printf("Kategori Barang : %s\n", filter_kategori[n].kategori);
+            printf("Harga Barang : %d\n\n", filter_kategori[n].harga);
 
             n++;
         }
