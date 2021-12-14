@@ -552,7 +552,7 @@ void pembayaran()
 
     kembalian = uang - totalHarga;
 
-    if (uang > totalHarga) {
+    if (uang >= totalHarga) {
         system("cls");
         printf("===================================================\n");
         printf("        ========== NOTA BELANJA ==========         \n");
@@ -597,10 +597,12 @@ void konfirmasi()
         {
         case 1:
             pembayaran();
+            totalHarga = 0;
             getch();
             break;
         case 2:
             printf("\n");
+            totalHarga = 0;
             break;
         }
     }
