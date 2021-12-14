@@ -38,7 +38,7 @@ int main()
 
     while (!feof(file_data))
     {
-        fscanf(file_data, "\nKode : %d\nKategori : %s\nNama Barang : %s\nHarga : %d", &data[z].kode, &data[z].kategori, &data[z].nama, &data[z].harga);
+        fscanf(file_data, "\nKode : %d\nKategori : %[^#]#\nNama Barang : %[^#]#\nHarga : %d", &data[z].kode, &data[z].kategori, &data[z].nama, &data[z].harga);
         z++;
     }
 
@@ -141,6 +141,7 @@ up:
 
     switch(a) {
     case 1:
+        printf("\n");
         break;
     case 2:
         b++;
