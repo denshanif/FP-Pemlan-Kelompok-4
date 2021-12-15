@@ -38,21 +38,15 @@ void cariBarang();
 void konfirmasi();
 void tampilKategori();
 void listKategori();
+void bacaData();
 
 int main()
 {
     int i, menu;
     char kembali;
 
-    file_data = fopen("Data.txt", "r");
+    bacaData();
 
-    while (!feof(file_data))
-    {
-        fscanf(file_data, "\nKode : %d\nKategori : %[^#]#\nNama Barang : %[^#]#\nHarga : %d", &data[z].kode, &data[z].kategori, &data[z].nama, &data[z].harga);
-        z++;
-    }
-
-    fclose(file_data);
     file_data=fopen("Beli.txt","w+");
     fclose(file_data);
     file_data=fopen("Beli.txt","a+");
@@ -163,7 +157,7 @@ up:
 
         for (i=0; i<banyakData ;i++) {
             if (data[i].kode == beli) {
-                fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d", data[i].kode, data[i].kategori, data[i].nama, data[i].harga);
+                fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\n", data[i].kode, data[i].kategori, data[i].nama, data[i].harga);
             } else {
                 c++;
             }
@@ -180,8 +174,8 @@ up:
 
         for (i=0; i<banyakData ;i++) {
             if (filter_kategori[i].kode == beli) {
-                fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d", filter_kategori[i].kode, filter_kategori[i].kategori, filter_kategori[i].nama, filter_kategori[i].harga);
-                } else {
+                fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\n", filter_kategori[i].kode, filter_kategori[i].kategori, filter_kategori[i].nama, filter_kategori[i].harga);
+            } else {
                 c++;
             }
         }
@@ -189,10 +183,8 @@ up:
 
     b = 1;
 
-    if (c==z) {
+    if (c==banyakData) {
         printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di list");
-    } else {
-        c = 0;
     }
 
     printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
@@ -593,7 +585,8 @@ up:
 void listKeranjang()
 {
     int i;
-    for (i = 1; i < b; i++)
+    totalHarga = 0;
+    for (i = 1; i < b-1; i++)
     {
         printf("Kode Barang : %d\n", keranjang[i].kode);
         printf("Nama Barang : %s\n", keranjang[i].nama);
@@ -619,18 +612,17 @@ void pembayaran()
         printf("        ========== NOTA BELANJA ==========         \n");
         printf("===================================================\n\n");
 
-        printf(" Daftar belanja anda:\n");
+        printf("Daftar belanja anda:\n");
         printf("=========================================\n");
         listKeranjang();
         printf("=========================================\n");
-        printf(" Total harga\t: Rp. %d\n", totalHarga);
-        printf(" Pembayaran\t: Rp. %d\n", uang);
-        printf(" Kembalian\t: Rp. %d\n\n", kembalian);
+        printf("Total harga\t: Rp. %d\n", totalHarga);
+        printf("Pembayaran\t: Rp. %d\n", uang);
+        printf("Kembalian\t: Rp. %d\n\n", kembalian);
 
         printf("===================================================\n");
         printf("      ========== TRANSAKSI SELESAI ==========      \n");
         printf("===================================================\n");
-        totalHarga = 0;
     } else {
         printf("MAAF UANG ANDA TIDAK CUKUP UNTUK MELAKUKAN PEMBAYARAN\n");
     }
@@ -657,18 +649,19 @@ void konfirmasi()
         {
         case 1:
             pembayaran();
-            totalHarga = 0;
-            b = 0;
+            b = 0, z = 0;
 
             fclose(file_data);
             remove("Beli.txt");
+
+            bacaData();
+
             file_data=fopen("Beli.txt","a+");
 
             getch();
             break;
         case 2:
             printf("\n");
-            totalHarga = 0;
             break;
         }
     }
@@ -829,4 +822,16 @@ void listKategori()
         printf("Kategori Barang : %s\n", filter_kategori[i].kategori);
         printf("Harga Barang : %d\n\n", filter_kategori[i].harga);
     }
+}
+
+void bacaData() {
+    file_data = fopen("Data.txt", "r");
+
+    while (!feof(file_data))
+        {
+            fscanf(file_data, "\nKode : %d\nKategori : %[^#]#\nNama Barang : %[^#]#\nHarga : %d", &data[z].kode, &data[z].kategori, &data[z].nama, &data[z].harga);
+            z++;
+        }
+
+    fclose(file_data);
 }
