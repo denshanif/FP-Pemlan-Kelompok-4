@@ -37,6 +37,7 @@ void tampilBarang();
 void cariBarang();
 void konfirmasi();
 void tampilKategori();
+void listKategori();
 
 int main()
 {
@@ -117,7 +118,7 @@ int main()
 void listNama()
 {
     int i;
-    for (i = 0; i < z; i++)
+    for (i = 1; i < z; i++)
     {
         printf("Nama Barang : %s\n", data[i].nama);
         printf("Kode Barang : %d\n", data[i].kode);
@@ -126,7 +127,7 @@ void listNama()
     }
 }
 
-void beli_barang(char *judul, int *banyakData)
+void beli_barang(char *judul, int banyakData)
 {
     int a, c=0, i, beli;
     b++;
@@ -137,31 +138,41 @@ up:
     if (banyakData == z) {
         printf("=========================== %s =============================\n\n", judul);
         listNama();
+
+        printf("Jumlah barang: %d\n", banyakData);
+
+        printf("Masukkan kode barang yang ingin dibeli: ");
+        scanf("%d", &beli);
+
+        for (i=0; i<banyakData ;i++) {
+            if (data[i].kode == beli) {
+                keranjang[b].nama = data[i].nama;
+                keranjang[b].kode = data[i].kode;
+                keranjang[b].kategori = data[i].kategori;
+                keranjang[b].harga = data[i].harga;
+            } else {
+                c++;
+            }
+        }
+
     } else {
         printf("====================== Kategori %s ========================\n\n", judul);
         listKategori();
 
-        if (n == 0)
-        {
-            printf("Tidak ada barang dengan kategori %s\n", judul);
-        }
-
         printf("Jumlah barang kategori %s : %d\n", judul, n);
-    }
 
-    printf("\n");
+        printf("Masukkan kode barang yang ingin dibeli: ");
+        scanf("%d", &beli);
 
-    printf("Masukkan kode barang yang ingin dibeli: ");
-    scanf("%d", &beli);
-
-    for (i=0; i<banyakData ;i++) {
-        if (data[i].kode == beli) {
-            keranjang[b].nama = data[i].nama;
-            keranjang[b].kode = data[i].kode;
-            keranjang[b].kategori = data[i].kategori;
-            keranjang[b].harga = data[i].harga;
-        } else {
-            c=c+1;
+        for (i=0; i<banyakData ;i++) {
+            if (filter_kategori[i].kode == beli) {
+                keranjang[b].nama = filter_kategori[i].nama;
+                keranjang[b].kode = filter_kategori[i].kode;
+                keranjang[b].kategori = filter_kategori[i].kategori;
+                keranjang[b].harga = filter_kategori[i].harga;
+            } else {
+                c++;
+            }
         }
     }
 
