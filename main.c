@@ -28,7 +28,7 @@ typedef struct data_beli barang_beli;
 typedef struct data_barang barang;
 
 barang data['0'];
-barang_beli keranjang[100];
+barang_beli keranjang['0'];
 kategori_barang filter_kategori['0'];
 
 FILE *file_data;
@@ -40,6 +40,7 @@ void tampilKategori();
 void listKategori();
 void bacaData();
 void bacaDataBeli();
+void hapusData();
 
 int main()
 {
@@ -179,7 +180,7 @@ up:
         }
     }
 
-    b = 1;
+    b = 2;
 
     if (c==banyakData) {
         printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di list");
@@ -637,15 +638,13 @@ void konfirmasi()
 {
     int a;
 
-    if (b==0 || b==2) {
-        system("cls");
-        printf("=========================== Keranjang Belanja =============================\n\n");
+    system("cls");
+    printf("=========================== Keranjang Belanja =============================\n\n");
+
+    if (b < 2) {
         printf("KERANJANG MASIH KOSONG\n");
     } else {
-        system("cls");
-        printf("=========================== Keranjang Belanja =============================\n\n");
         listKeranjang();
-        printf("\n%d\n", b);
         printf("TOTAL HARGA: Rp.%d\n", totalHarga);
 
         printf("Tekan 1 untuk lanjut ke pembayaran, 2 untuk kembali: ");
@@ -846,7 +845,7 @@ void bacaDataBeli() {
     fclose(file_data);
     file_data=fopen("Beli.txt","a+");
 
-    if (b>0) {
+    if (b > 1) {
         b = 1;
 
         while (!feof(file_data))
@@ -857,6 +856,54 @@ void bacaDataBeli() {
     }
 }
 
+void hapusData() {
+    int cari, i, j = 0, k;
+
+    system("cls");
+    printf("=========================== Hapus Data =============================\n\n");
+
+
+    bacaDataBeli();
+    listKeranjang();
+
+    if (b < 2) {
+        printf("KERANJANG MASIH KOSONG\n");
+    } else {
+
+        printf("input kode: ");
+        scanf("%d", &cari);
+
+        for (i=1; i<b; i++) {
+            if(keranjang[i].kode == cari) {
+                printf("Data %d Berhaasil Didelete\n\n", cari);
+
+                for (k=i; k<b; k++) {
+                    keranjang[k] = keranjang[k+1];
+                }
+
+                fclose(file_data);
+                remove("Beli.txt");
+
+                file_data=fopen("Beli.txt","a+");
+
+                b--;
+                break;
+            } else {
+                j++;
+            }
+        }
+
+        if (j == b) {
+            printf("Data Yang Anda Hapus Mungkin Tidak Ada\n\n");
+        }
+
+        for (i=1; i<b; i++) {
+            fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\nJumlah : %d\n", keranjang[i].kode, keranjang[i].kategori, keranjang[i].nama, keranjang[i].harga, keranjang[i].jumlah);
+        }
+
+        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
+    }
+}
 
 
 
