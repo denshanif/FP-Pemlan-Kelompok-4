@@ -5,7 +5,8 @@ Mata Kuliah: Pemrograman Lanjut
 Kelas: B081
 Kelompok: 4
 
-Judul Project: Aplikasi Sistem Manajemen Kasir Supermarket (Mini-Ket)
+# Judul Project 
+Aplikasi Sistem Manajemen Kasir Supermarket (Mini-Ket)
 
 # Screenshot Aplikasi:
 Screenshot 1
