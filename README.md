@@ -1,5 +1,5 @@
-# Final Project Pemrograman Lanjut B081 Kelompok 4
-Source code progres program final project pemrograman lanjut B081
+# Project Akhir Pemrograman Lanjut B081 Kelompok 4
+Source code program project akhir pemrograman lanjut B081 kelompok 4
 
 Mata Kuliah: Pemrograman Lanjut
 Kelas: B081
