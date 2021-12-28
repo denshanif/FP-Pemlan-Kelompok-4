@@ -7,7 +7,12 @@ Kelompok: 4
 
 Judul Project: Aplikasi Sistem Manajemen Kasir Supermarket (Mini-Ket)
 
-# Screenshot Aplikasi: 
+# Screenshot Aplikasi:
+Screenshot 1
+<img src="/screenshot/screenshot1.jpeg" >
+
+Screenshot 2
+
 
 # Anggota Kelompok:
 1. Hanif Al Fathoni (20081010001)
