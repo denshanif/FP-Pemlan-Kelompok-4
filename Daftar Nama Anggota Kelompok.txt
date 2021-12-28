@@ -12,6 +12,6 @@ Hanif Al Fathoni (20081010001)
 Ahmad Hasby Bik (20081010032)
 Ridwan Efendi (20081010071)
 Fatwa Sifaun Nahar (20081010073)
-Rifqi Alvian Ardhiansyah (20081010226)
+Rifqi Alvian Ardhiansyah (20081010239)
 
 Link repository Github: https://github.com/denshanif/FP-Pemlan-Kelompok-4
