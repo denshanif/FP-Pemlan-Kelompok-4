@@ -64,9 +64,8 @@ int main()
         printf("2. MENAMPILKAN BARANG BERDASARKAN KATEGORI. \n");
         printf("3. PENCARIAN DATA BARANG.\n");
         printf("4. KONFIRMASI PEMBELIAN.\n");
-        printf("5. HAPUS DATA DIKERANJANG.\n\n");
 
-        printf("6. KELUAR PROGRAM.\n");
+        printf("5. KELUAR PROGRAM.\n");
 
         printf("Masukkan pilihan anda: ");
         scanf("%d", &menu);
@@ -103,10 +102,6 @@ int main()
             getch();
             goto up;
         case 5:
-            hapusData();
-            getch();
-            goto up;
-        case 6:
             exit(0);
         default:
             printf("Maaf, input yang anda masukkan salah/invalid.");
