@@ -12,6 +12,22 @@ Screenshot 1
 <img src="/screenshot/screenshot1.jpeg" >
 
 Screenshot 2
+<img src="/screenshot/screenshot2.jpeg" >
+
+Screenshot 3
+<img src="/screenshot/screenshot3.jpeg" >
+
+Screenshot 4
+<img src="/screenshot/screenshot4.jpeg" >
+
+Screenshot 5
+<img src="/screenshot/screenshot5.jpeg" >
+
+Screenshot 6
+<img src="/screenshot/screenshot7.jpeg" >
+
+Screenshot 7
+<img src="/screenshot/screenshot6.jpeg" >
 
 
 # Anggota Kelompok:
