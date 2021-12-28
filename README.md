@@ -5,7 +5,7 @@ Mata Kuliah: Pemrograman Lanjut
 Kelas: B081
 Kelompok: 4
 
-# Judul Project 
+# Judul Project Akhir
 Aplikasi Sistem Manajemen Kasir Supermarket (Mini-Ket)
 
 # Screenshot Aplikasi:
@@ -31,7 +31,7 @@ Screenshot 7
 <img src="/screenshot/screenshot6.jpeg" >
 
 
-# Anggota Kelompok:
+# Nama Anggota Kelompok:
 1. Hanif Al Fathoni (20081010001)
 2. Ahmad Hasby Bik (20081010032)
 3. Ridwan Efendi (20081010071)
@@ -51,7 +51,7 @@ Pada aplikasi Mini-ket ini kami juga akan menyediakan beberapa fitur yaitu fitur
 5. Jumlah Barang
 6. Total Harga
 
-# Metode yang digunakan
+# Metode Yang Diterapkan
 Beberapa metode yang kami gunakan dalam program ini adalah:
 1. Untuk data barang dan data pembelian kami simpan pada file dengan menggunakan metode File Handling
 2. Untuk pengurutan barang metode yang kami gunakan adalah metode Bubble Sort (Ascending & Descending)
@@ -65,7 +65,7 @@ Untuk menu yang diawarkan ada 4 yaitu
 4. Keranjang belanja dan pembayaran
 5. Hapus barang pada keranjang belanja
 
-# Cara penggunaan Aplikasi 
+# Cara Penggunaan Aplikasi 
 1. Masuk Aplikasi
 2. Pilih menu yang ada pada menu utama
 3. Pilih menu 1 untuk menampilkan semua barang atau menu 2 untuk menampilkan barang sesuai kategori
