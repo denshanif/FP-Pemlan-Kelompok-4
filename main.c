@@ -12,7 +12,7 @@ struct data_barang
 struct data_beli
 {
     char nama[50], kategori[50];
-    int harga, kode;
+    int harga, kode, jumlah;
 };
 
 struct data_kategori
@@ -28,7 +28,7 @@ typedef struct data_beli barang_beli;
 typedef struct data_barang barang;
 
 barang data['0'];
-barang_beli keranjang['0'];
+barang_beli keranjang[100];
 kategori_barang filter_kategori['0'];
 
 FILE *file_data;
@@ -39,6 +39,7 @@ void konfirmasi();
 void tampilKategori();
 void listKategori();
 void bacaData();
+void bacaDataBeli();
 
 int main()
 {
@@ -49,6 +50,7 @@ int main()
 
     file_data=fopen("Beli.txt","w+");
     fclose(file_data);
+    remove("Beli.txt");
     file_data=fopen("Beli.txt","a+");
 
     up:
@@ -61,9 +63,10 @@ int main()
         printf("1. MENAMPILKAN SEMUA DATA BARANG.\n");
         printf("2. MENAMPILKAN BARANG BERDASARKAN KATEGORI. \n");
         printf("3. PENCARIAN DATA BARANG.\n");
-        printf("4. KONFIRMASI PEMBELIAN. \n\n");
+        printf("4. KONFIRMASI PEMBELIAN.\n");
+        printf("5. HAPUS DATA DIKERANJANG.\n\n");
 
-        printf("5. KELUAR PROGRAM.\n");
+        printf("6. KELUAR PROGRAM.\n");
 
         printf("Masukkan pilihan anda: ");
         scanf("%d", &menu);
@@ -92,19 +95,7 @@ int main()
             getch();
             goto up;
         case 4:
-            fclose(file_data);
-            file_data=fopen("Beli.txt","a+");
-
-            if (b>0) {
-                b = 1;
-
-                while (!feof(file_data))
-                {
-                    fscanf(file_data, "\nKode : %d\nKategori : %[^#]#\nNama Barang : %[^#]#\nHarga : %d", &keranjang[b].kode, &keranjang[b].kategori, &keranjang[b].nama, &keranjang[b].harga);
-                    b++;
-                }
-            }
-
+            bacaDataBeli();
             konfirmasi();
 
             printf("\n");
@@ -112,6 +103,10 @@ int main()
             getch();
             goto up;
         case 5:
+            hapusData();
+            getch();
+            goto up;
+        case 6:
             exit(0);
         default:
             printf("Maaf, input yang anda masukkan salah/invalid.");
@@ -141,10 +136,10 @@ void listNama()
 
 void beli_barang(char *judul, int banyakData)
 {
-    int a, c=0, i, beli;
-
+    int a, c, i, beli, banyak;
 up:
     system("cls");
+    c = 0;
 
     if (banyakData == z) {
         printf("=========================== %s =============================\n\n", judul);
@@ -152,12 +147,16 @@ up:
 
         printf("Jumlah barang: %d\n", banyakData);
 
-        printf("Masukkan kode barang yang ingin dibeli: ");
+        printf("\nMasukkan kode barang yang ingin dibeli: ");
         scanf("%d", &beli);
+
+        printf("Masukkan jumlah barang yang ingin dibeli: ");
+        scanf("%d", &banyak);
 
         for (i=0; i<banyakData ;i++) {
             if (data[i].kode == beli) {
-                fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\n", data[i].kode, data[i].kategori, data[i].nama, data[i].harga);
+                fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\nJumlah : %d\n", data[i].kode, data[i].kategori, data[i].nama, data[i].harga, banyak);
+                break;
             } else {
                 c++;
             }
@@ -169,12 +168,16 @@ up:
 
         printf("Jumlah barang kategori %s : %d\n", judul, n);
 
-        printf("Masukkan kode barang yang ingin dibeli: ");
+        printf("\nMasukkan kode barang yang ingin dibeli: ");
         scanf("%d", &beli);
+
+        printf("Masukkan jumlah barang yang ingin dibeli: ");
+        scanf("%d", &banyak);
 
         for (i=0; i<banyakData ;i++) {
             if (filter_kategori[i].kode == beli) {
-                fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\n", filter_kategori[i].kode, filter_kategori[i].kategori, filter_kategori[i].nama, filter_kategori[i].harga);
+                fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\nJumlah : %d\n", filter_kategori[i].kode, filter_kategori[i].kategori, filter_kategori[i].nama, filter_kategori[i].harga, banyak);
+                break;
             } else {
                 c++;
             }
@@ -187,6 +190,8 @@ up:
         printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di list");
     }
 
+ulangi:
+
     printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
     scanf("%d", &a);
 
@@ -196,6 +201,10 @@ up:
         break;
     case 2:
         goto up;
+    default:
+        printf("Maaf, input yang anda masukkan salah/invalid.");
+        printf("\n");
+        goto ulangi;
     }
 }
 
@@ -424,7 +433,7 @@ void cariKode() {
 
     system("cls");
 
-    int cari;
+    int a, cari;
     printf("=================== Pencarian Data Barang Berdasarkan Kode Barang ===================\n\n");
 
 	printf("Masukkan Kode Barang Yang Ingin Dicari: ");
@@ -454,10 +463,17 @@ void cariKode() {
     if (ketemu == 0)
     {
         printf ("Data Tidak Ditemukan\n");
-        printf("Tekan enter untuk mengulangi input nama barang.\n");
-        getch();
-        goto ulangi;
-    }
+        printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
+    	scanf("%d", &a);
+
+    	switch(a) {
+    	case 1:
+        	printf("\n");
+        	break;
+    	case 2:
+        	goto ulangi;
+  		}
+	}
     else
     {
             printf("Data barang ditemukan!\n\n");
@@ -476,6 +492,7 @@ void cariNama() {
 
     system("cls");
 
+    int a;
     char cari[25];
     printf("=================== Pencarian Data Barang Berdasarkan Nama Barang ==================\n\n");
 
@@ -507,9 +524,16 @@ void cariNama() {
     if (ketemu == 0)
     {
         printf ("Data Tidak Ditemukan\n");
-        printf("Tekan enter untuk mengulangi input nama barang.\n");
-        getch();
-        goto ulangi;
+	 	printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
+    	scanf("%d", &a);
+
+    	switch(a) {
+    	case 1:
+        	printf("\n");
+        	break;
+    	case 2:
+        	goto ulangi;
+  		}
     }
     else
     {
@@ -571,14 +595,15 @@ void listKeranjang()
 {
     int i;
     totalHarga = 0;
-    for (i = 1; i < b-1; i++)
+    for (i = 1; i < b; i++)
     {
         printf("Kode Barang : %d\n", keranjang[i].kode);
         printf("Nama Barang : %s\n", keranjang[i].nama);
         printf("Kategori Barang : %s\n", keranjang[i].kategori);
-        printf("Harga Barang : %d\n\n", keranjang[i].harga);
+        printf("Harga Barang : %d\n", keranjang[i].harga);
+        printf("Jumlah Barang : %d\n\n", keranjang[i].jumlah);
 
-        totalHarga = totalHarga + keranjang[i].harga;
+        totalHarga = totalHarga + (keranjang[i].harga*keranjang[i].jumlah);
     }
 }
 
@@ -617,14 +642,15 @@ void konfirmasi()
 {
     int a;
 
-    if (b == 0) {
+    if (b==0 || b==2) {
         system("cls");
         printf("=========================== Keranjang Belanja =============================\n\n");
-        printf("KERANJANG MASIH KOSONG");
+        printf("KERANJANG MASIH KOSONG\n");
     } else {
         system("cls");
         printf("=========================== Keranjang Belanja =============================\n\n");
         listKeranjang();
+        printf("\n%d\n", b);
         printf("TOTAL HARGA: Rp.%d\n", totalHarga);
 
         printf("Tekan 1 untuk lanjut ke pembayaran, 2 untuk kembali: ");
@@ -820,3 +846,23 @@ void bacaData() {
 
     fclose(file_data);
 }
+
+void bacaDataBeli() {
+    fclose(file_data);
+    file_data=fopen("Beli.txt","a+");
+
+    if (b>0) {
+        b = 1;
+
+        while (!feof(file_data))
+        {
+            fscanf(file_data, "Kode : %d\nKategori : %[^#]#\nNama Barang : %[^#]#\nHarga : %d\nJumlah : %d\n", &keranjang[b].kode, &keranjang[b].kategori, &keranjang[b].nama, &keranjang[b].harga, &keranjang[b].jumlah);
+            b++;
+        }
+    }
+}
+
+
+
+
+
