@@ -34,9 +34,10 @@ Pada aplikasi Mini-ket ini kami juga akan menyediakan beberapa fitur yaitu fitur
 6. Total Harga
 
 # Metode yang digunakan
-Metode yang kami gunakan ada 2,
-Untuk pengurutan barang metode yang kami gunakan adalah metode Bubble Sort
-Lalu untuk pencarian barang sendiri kami menggunakan metode Interpolation Search 
+Beberapa metode yang kami gunakan dalam program ini adalah:
+1. Untuk data barang dan data pembelian kami simpan pada file dengan menggunakan metode File Handling
+2. Untuk pengurutan barang metode yang kami gunakan adalah metode Bubble Sort (Ascending & Descending)
+3. Lalu untuk pencarian barang sendiri kami menggunakan metode Interpolation Search
 
 # List Menu
 Untuk menu yang diawarkan ada 4 yaitu 
