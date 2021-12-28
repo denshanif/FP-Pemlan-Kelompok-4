@@ -29,28 +29,30 @@ Pada aplikasi Mini-ket ini kami juga akan menyediakan beberapa fitur yaitu fitur
 6. Total Harga
 
 # Metode yang digunakan
-metode yang kami gunakan ada 2,
-Untuk pengurutan barang metode yang kami gunakan adalah metode bubble sort
+Metode yang kami gunakan ada 2,
+Untuk pengurutan barang metode yang kami gunakan adalah metode Bubble Sort
 Lalu untuk pencarian barang sendiri kami menggunakan metode Interpolation Search 
 
 # List Menu
-untuk menu yang diawarkan ada 4 yaitu 
-1. list produk yang ada
-2. pengurutan nama/harga/kategori baik secara ascending ataupun descending
-3. pencarian berdasarkan nama/kode baik secara ascending maupun descending
-4. tas belanja dan pembayaran
+Untuk menu yang diawarkan ada 4 yaitu 
+1. Menampilkan semua barang yang ada baik urut sesuai nama barang maupun harga barang
+2. Menampilkan barang berdasarkan kategorinya
+3. Pencarian berdasarkan nama barang maupun kode barang
+4. Keranjang belanja dan pembayaran
+5. Hapus barang pada keranjang belanja
 
 # Cara penggunaan Aplikasi 
 1. Masuk Aplikasi
-2. pilih menu yang ada
+2. Pilih menu yang ada pada menu utama
 3. Pilih menu 1 untuk menampilkan semua barang atau menu 2 untuk menampilkan barang sesuai kategori
-4. lalu selanjutnya jika masuk menu 1 pilih tampilan urutan barang sesuai keingininan jika pilih menu 2 maka lanjut ke tahap 5
-5. masukkan kode barang yang ingin dibeli dan masukkan jumlah barang yang ingin dibeli
-6. tekan 2 untuk melanjutkan membeli atau tekan 1 untuk kembali ke menu sebelumnya
-7. pilih menu 4 untuk konfirmasi pembelian barang
-8. pilih 1 untuk lanjut pembayaran
-9. masukkan nominal uang untuk pembayaran
-10. jika uang cukup maka transaksi selesai tapi jika uang tidak cukup maka akan ada pemberitahuan
+4. Lalu selanjutnya, jika masuk menu 1, pilih tampilan urutan barang sesuai keingininan, dan jika pilih menu 2 pilih kategori barang sesuai keinginan, kemudian lanjut ke tahap 5
+5. Masukkan kode barang yang ingin dibeli dan masukkan jumlah barang yang ingin dibeli
+6. Barang akan masuk ke keranjang belanja, anda dapat melanjutkan membeli barang lain ataupun selesai
+7. Apabila anda ingin menghapus barang pada keranjang belanja, anda dapat memilih menu 5
+8. Pilih menu 4 untuk menampilkan keranjang belanjaan anda dan juga melakukan konfirmasi pembelian barang
+9. Setalah melakukan konfirmasi pembelian pilih 1 untuk lanjut ke pembayaran
+10. Masukkan nominal uang untuk pembayaran
+11. Jika uang cukup maka transaksi selesai tapi jika uang tidak cukup maka akan ada pemberitahuan
 
 
 Link repository Github: https://github.com/denshanif/FP-Pemlan-Kelompok-4
