@@ -28,4 +28,29 @@ Pada aplikasi Mini-ket ini kami juga akan menyediakan beberapa fitur yaitu fitur
 5. Jumlah Barang
 6. Total Harga
 
+# Metode yang digunakan
+metode yang kami gunakan ada 2,
+Untuk pengurutan barang metode yang kami gunakan adalah metode bubble sort
+Lalu untuk pencarian barang sendiri kami menggunakan metode Interpolation Search 
+
+# List Menu
+untuk menu yang diawarkan ada 4 yaitu 
+1. list produk yang ada
+2. pengurutan nama/harga/kategori baik secara ascending ataupun descending
+3. pencarian berdasarkan nama/kode baik secara ascending maupun descending
+4. tas belanja dan pembayaran
+
+# Cara penggunaan Aplikasi 
+1. Masuk Aplikasi
+2. pilih menu yang ada
+3. Pilih menu 1 untuk menampilkan semua barang atau menu 2 untuk menampilkan barang sesuai kategori
+4. lalu selanjutnya jika masuk menu 1 pilih tampilan urutan barang sesuai keingininan jika pilih menu 2 maka lanjut ke tahap 5
+5. masukkan kode barang yang ingin dibeli dan masukkan jumlah barang yang ingin dibeli
+6. tekan 2 untuk melanjutkan membeli atau tekan 1 untuk kembali ke menu sebelumnya
+7. pilih menu 4 untuk konfirmasi pembelian barang
+8. pilih 1 untuk lanjut pembayaran
+9. masukkan nominal uang untuk pembayaran
+10. jika uang cukup maka transaksi selesai tapi jika uang tidak cukup maka akan ada pemberitahuan
+
+
 Link repository Github: https://github.com/denshanif/FP-Pemlan-Kelompok-4
