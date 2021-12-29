@@ -64,8 +64,8 @@ int main()
         printf("1. MENAMPILKAN SEMUA DATA BARANG.\n");
         printf("2. MENAMPILKAN BARANG BERDASARKAN KATEGORI. \n");
         printf("3. PENCARIAN DATA BARANG.\n");
-        printf("4. KONFIRMASI PEMBELIAN.\n");
-        printf("5. HAPUS DATA DIKERANJANG.\n\n");
+        printf("4. KONFIRMASI PEMBELIAN (MELIHAT KERANJANG BELANJA).\n");
+        printf("5. HAPUS BARANG DI KERANJANG BELANJA.\n");
 
         printf("6. KELUAR PROGRAM.\n");
 
@@ -105,6 +105,8 @@ int main()
             goto up;
         case 5:
             hapusData();
+            printf("\n");
+            printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
             getch();
             goto up;
         case 6:
@@ -151,11 +153,11 @@ up:
         printf("\nMasukkan kode barang yang ingin dibeli: ");
         scanf("%d", &beli);
 
-        printf("Masukkan jumlah barang yang ingin dibeli: ");
-        scanf("%d", &banyak);
-
         for (i=0; i<banyakData ;i++) {
             if (data[i].kode == beli) {
+                printf("Masukkan jumlah barang yang ingin dibeli: ");
+                scanf("%d", &banyak);
+
                 fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\nJumlah : %d\n", data[i].kode, data[i].kategori, data[i].nama, data[i].harga, banyak);
                 break;
             } else {
@@ -172,11 +174,11 @@ up:
         printf("\nMasukkan kode barang yang ingin dibeli: ");
         scanf("%d", &beli);
 
-        printf("Masukkan jumlah barang yang ingin dibeli: ");
-        scanf("%d", &banyak);
-
         for (i=0; i<banyakData ;i++) {
             if (filter_kategori[i].kode == beli) {
+                printf("Masukkan jumlah barang yang ingin dibeli: ");
+                scanf("%d", &banyak);
+
                 fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\nJumlah : %d\n", filter_kategori[i].kode, filter_kategori[i].kategori, filter_kategori[i].nama, filter_kategori[i].harga, banyak);
                 break;
             } else {
@@ -188,12 +190,14 @@ up:
     b = 2;
 
     if (c==banyakData) {
-        printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di list");
+        printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di daftar barang.");
+    } else {
+        printf("\nBarang yang anda beli telah berhasil dimasukkan ke keranjang belanja.\n");
     }
 
 ulangi:
 
-    printf("\nTekan 1 untuk berhenti, 2 untuk melanjutkan: ");
+    printf("\nTekan 1 untuk membeli barang dari kategori lain, 2 untuk lanjut membeli barang di kategori ini: ");
     scanf("%d", &a);
 
     switch(a) {
@@ -634,6 +638,15 @@ void pembayaran()
         printf("===================================================\n");
         printf("      ========== TRANSAKSI SELESAI ==========      \n");
         printf("===================================================\n");
+
+        b = 0, z = 0;
+
+        fclose(file_data);
+        remove("Beli.txt");
+
+        bacaData();
+
+        file_data=fopen("Beli.txt","a+");
     } else {
         printf("MAAF UANG ANDA TIDAK CUKUP UNTUK MELAKUKAN PEMBAYARAN\n");
     }
@@ -647,7 +660,7 @@ void konfirmasi()
     printf("=========================== Keranjang Belanja =============================\n\n");
 
     if (b < 2) {
-        printf("KERANJANG MASIH KOSONG\n");
+        printf("KERANJANG BELANJA ANDA MASIH KOSONG\n");
     } else {
         listKeranjang();
         printf("TOTAL HARGA: Rp.%d\n", totalHarga);
@@ -659,14 +672,6 @@ void konfirmasi()
         {
         case 1:
             pembayaran();
-            b = 0, z = 0;
-
-            fclose(file_data);
-            remove("Beli.txt");
-
-            bacaData();
-
-            file_data=fopen("Beli.txt","a+");
 
             getch();
             break;
@@ -872,15 +877,15 @@ void hapusData() {
     listKeranjang();
 
     if (b < 2) {
-        printf("KERANJANG MASIH KOSONG\n");
+        printf("KERANJANG BELANJA ANDA MASIH KOSONG\n");
     } else {
 
-        printf("input kode: ");
+        printf("Masukkan Kode Barang yang ingin anda hapus dari keranjang belanja: ");
         scanf("%d", &cari);
 
         for (i=1; i<b; i++) {
             if(keranjang[i].kode == cari) {
-                printf("Data %d Berhaasil Didelete\n\n", cari);
+                printf("\nBarang dengan Kode %d telah berhasil dihapus dari keranjang belanja anda\n", cari);
 
                 for (k=i; k<b; k++) {
                     keranjang[k] = keranjang[k+1];
@@ -899,14 +904,12 @@ void hapusData() {
         }
 
         if (j == b) {
-            printf("Data Yang Anda Hapus Mungkin Tidak Ada\n\n");
+            printf("Data yang ingin anda hapus tidak ditemukan\n\n");
         }
 
         for (i=1; i<b; i++) {
             fprintf(file_data,"Kode : %d\nKategori : %s#\nNama Barang : %s#\nHarga : %d\nJumlah : %d\n", keranjang[i].kode, keranjang[i].kategori, keranjang[i].nama, keranjang[i].harga, keranjang[i].jumlah);
         }
-
-        printf("Tekan enter untuk kembali ke menu sebelumnya.\n");
     }
 }
 
