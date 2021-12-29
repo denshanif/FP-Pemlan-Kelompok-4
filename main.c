@@ -193,13 +193,11 @@ up:
 
     if (c==banyakData) {
         printf("\nMaaf Kode yang anda masukkan salah/tidak tersedia di daftar barang.");
-    } else {
-        printf("\nBarang yang anda beli telah berhasil dimasukkan ke keranjang belanja.\n");
     }
 
 ulangi:
 
-    printf("\nTekan 1 untuk membeli barang dari kategori lain, 2 untuk lanjut membeli barang di kategori ini: ");
+    printf("\nTekan 1 untuk membeli barang dari menu lain, 2 untuk lanjut membeli barang di menu ini: ");
     scanf("%d", &a);
 
     switch(a) {
