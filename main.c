@@ -185,6 +185,8 @@ up:
                 c++;
             }
         }
+
+        printf("\nBarang yang anda beli telah berhasil dimasukkan ke keranjang belanja.\n");
     }
 
     b = 2;
